@@ -1,11 +1,36 @@
 import { useState, useEffect } from "react"
-import { Container,Row , Col} from "react-bootstrap"
+import { Container,Row , Col,Nav    } from "react-bootstrap"
 import { ArrowRightCircle } from "react-bootstrap-icons"
 import headerImg from "../assets/img/header-img.svg"
 
 
 
 export const Banner = () =>{
+    const[activeLink, setActiveLink] = useState('home');
+    const[scolled,seScrolled]=useState(false);
+
+    useEffect(()=>{
+        const onScroll=()=>{
+            if (window.scrollY > 50){
+                seScrolled(true);
+
+            }else{
+                seScrolled(false);
+            }
+        }
+
+        window.addEventListener("scroll", onScroll)
+
+        return ()=> window.removeEventListener("scroll",onScroll);
+    },[])
+
+        const onUpdateActiveLink=(value)=>{
+        setActiveLink(value)
+        }
+
+
+
+
     const [loopNum, setLoopNum] = useState(0);
     const [isDeleting, setIsDeleting] = useState(false);
     const toRotate = [ "Backend Developer","Frontend Developer","UI/UX Designer"];
@@ -66,8 +91,9 @@ export const Banner = () =>{
                 <span className="tagline">Welcome to my Portafolio</span>
                 <h1>{'Hi I´m Angie'}<span className="wrap">{text}</span></h1>
                 <p>Welcome to my online portfolio! I'm Angie, a backend developer passionate about crafting robust and efficient technological solutions. Explore my projects to see examples of my work in implementing complex algorithms, optimizing databases, and building scalable systems using technologies such as Python, Java, and SQL. Let's bring your technological vision to life together.</p>
-                <button onClick={()=>console.log('connect')}>Let's connect<ArrowRightCircle size={25}/></button>
-                
+              
+                <button> <Nav.Link href="#skills" className={activeLink === 'skills' ? 'active navbar-link' : 'navbar-link'} onClick={()=>onUpdateActiveLink('skills')} >Let's connect</Nav.Link><ArrowRightCircle size={25}/></button> 
+
                 </Col>
 
                 <Col xs={12} md={6} xl={5}>
