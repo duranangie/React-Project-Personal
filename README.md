@@ -76,6 +76,6 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 The brand new Bootstrap Icons library to use as React components.Installation boostrap icon
 
 
-## `npm i react-multi-carousel`  
+### `npm i react-multi-carousel`  
 
 Production-ready, lightweight fully customizable React carousel component that rocks supports multiple items and SSR(Server-side rendering).
